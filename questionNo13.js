@@ -17,6 +17,7 @@ let countObject = products.reduce((a, item) => {
   }
 }, {});
 
+
 console.log(countObject);
 
 let sortObject = Object.entries(countObject).sort((a,b)=>b[1]-a[1]);
