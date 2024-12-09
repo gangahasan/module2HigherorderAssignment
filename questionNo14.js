@@ -12,7 +12,7 @@ const employees = [
 
 let filtered = employees.filter((item)=>item.tasksCompleted > 5);
 
-let performancelist = filtered.map((item,performance)=>{
+let performancelist = filtered.map((item)=>{
     if(item.rating > 4.5){
         item.performance = "Excellent";
     }
@@ -22,11 +22,19 @@ let performancelist = filtered.map((item,performance)=>{
     else{
     item.performance = "Needs Improvement";
     }
-    return `{name:${item.name} , performance:${item.performance}}`
+    return {name: item.name , performance:item.performance}
 })
-// console.log(preformancelist);
-    performancelist.sort((a,b)=>b.rating-a.rating);
 
-        
+    performancelist.sort((a,b)=>{
+        if(a.performance < b.performance){
+            return -1;
+        }
+        else if(a.performance > b.performance) {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    });   
     console.log(performancelist);
 
